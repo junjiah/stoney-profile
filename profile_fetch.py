@@ -10,11 +10,12 @@ import tweepy
 STONEY_ID = 292830390
 DB_PATH = "profiles.db"
 
+db_exists = os.path.exists(DB_PATH)
 conn = sqlite3.connect(DB_PATH)
 conn.execute("PRAGMA foreign_keys = on;")
 
 # Create DB
-if not os.path.exists(DB_PATH):
+if not db_exists:
     print("creating DB")
     sql = """
     create table if not exists PROFILES(
@@ -53,8 +54,8 @@ pic_id = hashlib.md5(pic_blob).digest()
 cursor = conn.cursor()
 sql = "select PIC_ID from PROFILE_HISTORY order by UPDATED_AT desc limit 1;"
 cursor.execute(sql)
-last_pic_id = cursor.fetchone()[0]
-if last_pic_id == pic_id:
+optional_last_pic_id = cursor.fetchone()
+if optional_last_pic_id and optional_last_pic_id[0] == pic_id:
     print("no change")
     sys.exit(0)
 
