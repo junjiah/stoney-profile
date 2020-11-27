@@ -29,9 +29,11 @@ if not os.path.exists(DB_PATH):
     conn.execute(sql)
 
 # Connect to twitter and fetch profile pictures
-with open("twitter-credentials", "r") as f:
-    lines = f.readlines()
-    key, secret = lines[0].strip(), lines[1].strip()
+key, secret = os.environ.get("T_KEY"), os.environ.get("T_SECRET")
+if not key or not secret:  # Local dev
+    with open("twitter-credentials", "r") as f:
+        lines = f.readlines()
+        key, secret = lines[0].strip(), lines[1].strip()
 
 auth = tweepy.OAuthHandler(key, secret)
 api = tweepy.API(auth)
