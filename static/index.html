@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+        />
+
+        <title>Stoney's Profile</title>
+        <meta name="description" content="stoney-profile" />
+        <meta name="author" content="junjiahhh" />
+
+        <!-- Development -->
+        <!-- <link
+            rel="stylesheet"
+            href="https://cdn.metroui.org.ua/v4/css/metro-all.min.css"
+            /> -->
+
+        <!-- Production -->
+        <link
+            rel="stylesheet"
+            href="https://cdn.metroui.org.ua/v4.3.2/css/metro-all.min.css"
+        />
+        <link rel="stylesheet" href="styles.css" />
+    </head>
+
+    <body>
+        <div class="container">
+            <br />
+            <h2
+                class="text-center"
+                style="font-family: 'Coca-ColaCareFontKaiTi'"
+            >
+                历史上的史东妮
+            </h2>
+            <input
+                id="datepicker"
+                data-role="datepicker"
+                data-min-year="2020"
+                data-on-set="updateProfile"
+                data-cls-picker="bg-grey"
+            />
+            <input
+                id="timepicker"
+                data-role="timepicker"
+                data-on-set="updateProfile"
+                data-cls-picker="bg-grey"
+            />
+            <br />
+            <br />
+            <img id="profile" class="profile" onerror="imageError()" />
+        </div>
+        <script src="https://cdn.metroui.org.ua/v4/js/metro.min.js"></script>
+        <script src="scripts.js"></script>
+    </body>
+</html>
